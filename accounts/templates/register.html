@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="global-container">
+	<div class="card login-form shadow-lg p-3 mb-5 bg-body rounded">
+	<div class="card-body">
+		<h3 class="card-title text-center">REGISTER</h3>
+		<div class="card-text">
+			{% if messages %}
+				
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							{% for i in messages%}
+							{{i}}
+							{% endfor %}
+						</div>
+				
+			{% endif %}
+			<form action="/signup" method="POST">
+				{% csrf_token %}
+				<!-- to error: add class "has-danger" -->
+				<div class="form-group ">
+					<label for="exampleInputEmail2" class="my-2">Username</label>
+					{{form.username|add_class:"form-control form-control-sm "}}
+				</div>
+				<div class="form-group ">
+					<label for="exampleInputEmail1" class="my-2">Email address</label>
+					{{form.email|add_class:"form-control form-control-sm "}}
+				</div>
+				<div class="form-group ">
+					<label for="exampleInputPassword1" class="my-2">Password</label>
+					{{form.password1|add_class:"form-control form-control-sm "}}
+				</div>
+				<div class="form-group ">
+					<a href="#"  style="float:right;font-size:12px;">Forgot password?</a>
+					<label for="exampleInputPassword1" class="my-2">Confirm Password</label>
+					{{form.password2|add_class:"form-control form-control-sm "}}
+				</div>
+				<div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary ">Sign up</button>
+                </div>
+				
+				<div class="sign-up">
+					Already have an account? <a href="{% url 'login_account'%}">Sign in</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

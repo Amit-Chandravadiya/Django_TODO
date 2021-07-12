@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="global-container">
+	<div class="card login-form shadow-lg p-3 mb-5 bg-body rounded">
+	<div class="card-body">
+		<h3 class="card-title text-center">ERROR</h3>
+        <hr>
+		<div class="card-text text-center">
+			{% if messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {% for i in messages %}
+                        {{i}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+		</div>
+        <div class="d-grid gap-2 my-4">
+            <a href="{% url 'home' %}" class="btn btn-primary ">Back</a>
+        </div>
+	</div>
+</div>
+</div>
+{% endblock %}
